@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1"/>
+		<title>Clips the Game</title>
+		<link rel="stylesheet" href="css/markdown.css"/>
+		<link rel="stylesheet" href="css/styles.css"/>
+		<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+		<script type="text/javascript">
+			function emscriptenPreRun(o){
+				o.memoryInitializerPrefixURL='clips/';
+			}
+		</script>
+		<script async type="text/javascript" src="clips/clips.js"></script>
+		<script type="text/javascript" src="js/script.js"></script>
+	</head>
+	<body>
+		<div id="global-alert" class="markdown-body alert alert-info"><span class="alert-msg"><strong>Loading...</strong> Please wait while the game loads.</span></div>
+		<article id="content" class="markdown-body" style="display: none">
+			<h1 id="title"></h1>
+			<div id="info"></div>
+			<h2 class="collapsable">Defenitions</h2>
+			<div><pre class="language-none"><code id="defenitions"></code></pre></div>
+			<h2 class="collapsable">Output</h2>
+			<div id="console"></div>
+			<h2>Input</h2>
+			<div>
+				<div style="display: none" id="msg-alert" class="alert">
+					<button>×</button>
+					<span class="alert-msg"></span>
+					<span style="display: none" id="continue-span">Click <a href="#">here</a> to continue.</span>
+				</div>
+				<input id="input" placeholder="(a fact to be asserted)" class="text" type="text"/>
+				<button class="wide-button" onclick="this.blur();" id="btn_assert">Assert</button>
+				<button class="wide-button" onclick="this.blur();" id="btn_undo">Undo</button>
+			</div>
+		</article>
+	</body>
+</html>
+

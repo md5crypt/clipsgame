@@ -1,0 +1,126 @@
+input.text {
+	width: 100%;
+	height: 34px;
+	padding: 6px 12px;
+	border: 1px solid #ccc;
+	box-shadow: inset 0 1px 1px #0000001a;
+	box-sizing: border-box;
+	font-size: 1em;
+}
+button.wide-button:hover{
+	background-color: #ddd;
+}
+button.wide-button{
+	color: inherit;
+	background-color: rgba(128,128,128,0.08);
+	padding: 3px 12px;
+	font-size: 1.2em;
+	font-family: inherit;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: middle;
+	border: 1px solid #eee;
+	display: block;
+	width: 100%;
+	border-color: #ccc;
+	margin: 5px 0px;
+	cursor: pointer;
+	touch-action: manipulation;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+button.wide-button.disabled{
+	opacity: .5;
+	cursor: unset;
+}
+button.wide-button.disabled:hover{
+	background-color: rgba(128,128,128,0.08);
+}
+#console pre {
+	margin: 0;
+	padding: .1em .5em;
+	white-space: pre-wrap;
+}
+#console {
+	font-size: 1em;
+}
+.collapsable{
+	cursor:pointer;
+}
+.collapsable:after{
+	font-size: .8em;
+	content: "\25bc";
+	float: right;
+	margin-right: 20px;
+	color: #aaa;
+}
+.collapsable.collapsed:after{
+	content: "\25c0";
+}
+.alert button:focus, .alert button:hover{
+	color: #000;
+	cursor: pointer;
+	opacity: .5;
+}
+.alert button{
+	position: relative;
+	top: -2px;
+	right: -21px;
+	color: inherit;
+	-webkit-appearance: none;
+	padding: 0;
+	cursor: pointer;
+	background: 0 0;
+	border: 0;
+	float: right;
+	font-size: 21px;
+	opacity: .2;
+	font-weight: 700;
+	font-family: inherit;
+}
+.alert {
+	padding: 15px;
+	border: 1px solid transparent;
+	border-radius: 4px;
+	margin-bottom: 20px;
+	box-sizing: border-box;
+	padding-right: 35px;
+}
+.alert a {
+	color: inherit;
+	font-weight: bold;
+}
+.alert-success {
+	color: #3c763d;
+	background-color: #dff0d8;
+	border-color: #d6e9c6;
+}
+.alert-danger {
+	color: #a94442;
+	background-color: #f2dede;
+	border-color: #ebccd1;
+}
+.alert-info {
+	color: #31708f;
+	background-color: #d9edf7;
+	border-color: #bce8f1;
+}
+.alert-warning {
+	color: #8a6d3b;
+	background-color: #fcf8e3;
+	border-color: #faebcc;
+}
+.clips-keyword{
+	color: rgb(147, 15, 128);
+}
+.clips-name{
+	color: #3535A0;
+}
+.clips-operator{
+	color: #D14;
+}
+.clips-variable{
+	color: rgb(49, 132, 149);
+}
