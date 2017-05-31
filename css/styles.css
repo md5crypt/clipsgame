@@ -50,14 +50,18 @@ button.wide-button.disabled:hover{
 	cursor:pointer;
 }
 .collapsable:after{
-	font-size: .8em;
-	content: "\25bc";
+	content: "\00a0";
 	float: right;
 	margin-right: 20px;
 	color: #aaa;
+	width: 14px;
+	opacity: .4;
+	background-repeat: no-repeat;
+    background-position: center;
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14px' height='14px' viewBox='0 0 14 14'%3E%3Cpolygon fill='%23000' points='11.949%2C3.404 7%2C8.354 2.05%2C3.404 -0.071%2C5.525 7%2C12.596 14.07%2C5.525 '/%3E%3C/svg%3E");
 }
 .collapsable.collapsed:after{
-	content: "\25c0";
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14px' height='14px' viewBox='0 0 14 14'%3E%3Cpolygon fill='%23000' points='3.404%2C2.051 8.354%2C7 3.404%2C11.95 5.525%2C14.07 12.596%2C7 5.525%2C-0.071 '/%3E%3C/svg%3E");
 }
 .alert button:focus, .alert button:hover{
 	color: #000;
@@ -112,15 +116,32 @@ button.wide-button.disabled:hover{
 	background-color: #fcf8e3;
 	border-color: #faebcc;
 }
+pre.language-clips{
+    background-color: rgba(27,31,35,0.02);
+}
 .clips-keyword{
 	color: rgb(147, 15, 128);
 }
 .clips-name{
-	color: #3535A0;
+	color: #795da3;
 }
 .clips-operator{
-	color: #D14;
+	color: rgb(0, 128, 192);
 }
 .clips-variable{
-	color: rgb(49, 132, 149);
+	color: #ed6a43;
+}
+a.back-button:hover{
+	opacity: 0.75;
+	text-decoration: none;
+}
+a.back-button{
+	width: 16px;
+    float: left;
+    margin-left: -26px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14px' height='14px' viewBox='0 0 14 14'%3E%3Cpath fill='%23000' d='M5%2C3V0L1%2C4l4%2C4V5c0%2C0%2C6%2C0%2C6%2C3s-5%2C4-5%2C4v2c0%2C0%2C7-1%2C7-6C13%2C4%2C8%2C3%2C5%2C3z'/%3E%3C/svg%3E");
+	background-position: center left;
+    background-repeat: no-repeat;
+	background-size: contain;
+	opacity: .4;
 }
