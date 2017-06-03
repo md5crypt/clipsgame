@@ -178,7 +178,7 @@ $(function(){
 	}
 	function colorSyntax(code){
 		var last = 'other';
-		return code.replace(/(\?[^\s()]*)|\b(defrule|deffacts|assert|retract|not|and|or|forall|exists)\b|([=><()-]+)|([^\s()]+)/g,function(match,variable,keyword,operator){
+		return code.replace(/(\?[^\s()]*)|\b(defrule|deffacts|assert|retract|not|and|or|forall|exists)\b|((?:[=><()-]+|&#62;|&#60;|&gt;|&lt;))|([^\s()]+)/g,function(match,variable,keyword,operator){
 			var type = 'other';
 			if(variable)
 				type = 'variable';
