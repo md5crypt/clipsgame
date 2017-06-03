@@ -4,7 +4,7 @@ A logic game based on the [Clips rule engine](http://www.clipsrules.net/ ).
 Play it here: https://md5crypt.github.io/clipsgame/
 
 ## How to play
-http://io.badgerland.eu/clipsdev/#how-to-play
+https://md5crypt.github.io/clipsgame/#how-to-play
 
 ## Level structure
 All level definition files and the level index file are located in the `levels` folder.
