@@ -7,13 +7,21 @@
 		<link rel="stylesheet" href="css/styles.css"/>
 		<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
 		<script type="text/javascript">var Module = {'memoryInitializerPrefixURL':'clips/'};</script>
-		<script async type="text/javascript" src="clips/clips.js"></script>
+		<script type="text/javascript" src="js/micromd.min.js"></script>
 		<script type="text/javascript" src="js/script.js"></script>
 	</head>
 	<body>
 		<a href="https://github.com/md5crypt/clipsgame"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
 		<div id="global-alert" class="markdown-body alert alert-info"><span class="alert-msg"><strong>Loading...</strong> Please wait while the game loads.</span></div>
-		<article id="content" class="markdown-body" style="display: none">
+		<article id="level-select" class="markdown-body" style="display: none">
+			<h1>Clips the Game</h1>
+			<p>A demanding logic game based on the <a href="http://www.clipsrules.net/">clips rule engine</a>.<p> 
+			<h2>Level Select</h2>
+			<a class="menu-link" href="#how-to-play">How to Play</a>
+			<div id="menu"></div>
+		</article>
+		<article id="how-to-play" class="markdown-body" style="display: none"></article>
+		<article id="level-content" class="markdown-body" style="display: none">
 			<h1><a href="#level-select" class="back-button" alt="go to level select">&nbsp;</a><span id="title"></span></h1>
 			<div id="info"></div>
 			<h2 class="collapsable">Defenitions</h2>

@@ -53,15 +53,28 @@ button.wide-button.disabled:hover{
 	content: "\00a0";
 	float: right;
 	margin-right: 20px;
-	color: #aaa;
 	width: 14px;
 	opacity: .4;
 	background-repeat: no-repeat;
     background-position: center;
 	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14px' height='14px' viewBox='0 0 14 14'%3E%3Cpolygon fill='%23000' points='11.949%2C3.404 7%2C8.354 2.05%2C3.404 -0.071%2C5.525 7%2C12.596 14.07%2C5.525 '/%3E%3C/svg%3E");
 }
-.collapsable.collapsed:after{
+.collapsable.collapsed:after, .menu-link:before{
 	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14px' height='14px' viewBox='0 0 14 14'%3E%3Cpolygon fill='%23000' points='3.404%2C2.051 8.354%2C7 3.404%2C11.95 5.525%2C14.07 12.596%2C7 5.525%2C-0.071 '/%3E%3C/svg%3E");
+}
+.menu-link{
+	font-size: 1.4em;
+	display: block;
+	margin-bottom: 0.3em;
+}
+.menu-link:before{
+	content: "\00a0";
+	float: left;
+	margin-right: 20px;
+	width: 14px;
+	opacity: .4;
+	background-repeat: no-repeat;
+    background-position: center;
 }
 .alert button:focus, .alert button:hover{
 	color: #000;
@@ -115,6 +128,9 @@ button.wide-button.disabled:hover{
 	color: #8a6d3b;
 	background-color: #fcf8e3;
 	border-color: #faebcc;
+}
+#msg-alert p{
+	display: inline;
 }
 pre.language-clips{
     background-color: rgba(27,31,35,0.02);

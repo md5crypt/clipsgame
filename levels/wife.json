@@ -1,7 +1,7 @@
 {
 	"title":"The Perfect Wife",
 	"description":"Help caveman Bob find happiness with his love, Alice. To do so he will need to outwit his rival Steve.",
-	"goalStr":"Add <code>(married alice to bob)</code> to the fact table using any number of assertions.",
+	"goalStr":"Add `(married alice to bob)` to the fact table using any number of assertions.",
 	"successStr":"Unfortunately Alice was in only for the food. After dinner she got a divorce.",
 	"goal":"(married alice to bob)",
 	"tabu":["(married alice to bob)","(has bob food)"],

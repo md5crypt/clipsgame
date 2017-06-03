@@ -4,7 +4,7 @@ A logic game based on the [Clips rule engine](http://www.clipsrules.net/ ).
 Play it here: https://md5crypt.github.io/clipsgame/
 
 ## How to play
-_todo_
+http://io.badgerland.eu/clipsdev/#how-to-play
 
 ## Level structure
 All level definition files and the level index file are located in the `levels` folder.
@@ -22,7 +22,7 @@ The `.json` file has the following structure:
 {
 	"title":"The Hungry Tiger",
 	"description":"The tiger is hungry! You have to feed it!",
-	"goalStr":"Add <code>(is tiger fed)</code> to the fact table using only one assertion.",
+	"goalStr":"Add `(is tiger fed)` to the fact table using only one assertion.",
 	"successStr":"The tiger thanks you!",
 	"goal":"(is tiger fed)",
 	"tabu":["(is tiger fed)"],
@@ -32,9 +32,9 @@ The `.json` file has the following structure:
 where
 
 * `title` is the level's name
-* `description` is the level's plot description
-* `goalStr` is the level's goal description
-* `successStr` is the text that is added after _"level cleared!"_ 
+* `description` is the level's plot description (in markdown)
+* `goalStr` is the level's goal description (in markdown)
+* `successStr` is the text that is added after _"level cleared!"_  (in markdown)
 * `goal` is the goal fact
 * `tabu` is a array of restricted facts. `?` can be used a wildcard, i.e. `(is ? fed)`
 * `limit` is the amount of facts that can be asserted by the player. `-1` for no limit

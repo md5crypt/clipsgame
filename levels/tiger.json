@@ -1,7 +1,7 @@
 {
 	"title":"The Hungry Tiger",
 	"description":"The tiger is hungry! You have to feed it!",
-	"goalStr":"Add <code>(is tiger fed)</code> to the fact table using only one assertion.",
+	"goalStr":"Add `(is tiger fed)` to the fact table using only one assertion.",
 	"successStr":"The tiger thanks you!",
 	"goal":"(is tiger fed)",
 	"tabu":["(is tiger fed)"],
