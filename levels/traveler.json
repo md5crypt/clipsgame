@@ -1,6 +1,6 @@
 {
 	"title":"The Wandering Traveler",
-	"description":"Outwit murderous assassins and Help a wary traveler get a solid rest in a inn after a long journey.",
+	"description":"Outwit murderous assassins and help a wary traveler get some rest after a long journey.",
 	"goalStr":"Add `(contains forest traveler)` to the fact table.",
 	"successStr":"Umm... you just randomly helped someone else, didn't you? That poor soul is still in the forest, _you monster_!",
 	"goal":"(contains inn traveler)",
