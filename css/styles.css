@@ -147,6 +147,9 @@ pre.language-clips{
 .clips-variable{
 	color: #ed6a43;
 }
+.clips-comment{
+	color: #34a834;
+}
 a.back-button:hover{
 	opacity: 0.75;
 	text-decoration: none;

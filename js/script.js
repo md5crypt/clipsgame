@@ -176,11 +176,14 @@ $(function(){
 			},100);
 		}
 	}
+	
 	function colorSyntax(code){
 		var last = 'other';
-		return code.replace(/(\?[^\s()]*)|\b(defrule|deffacts|assert|retract|not|and|or|forall|exists)\b|((?:[=><()-]+|&#62;|&#60;|&gt;|&lt;))|([^\s()]+)/g,function(match,variable,keyword,operator){
+		return code.replace(/(;[^\r\n]*)|(\?[^\s()]*)|\b(defrule|deffacts|assert|retract|not|and|or|forall|exists)\b|((?:[=><()-]+|&#62;|&#60;|&gt;|&lt;))|([^\s()]+)/g,function(match,comment,variable,keyword,operator){
 			var type = 'other';
-			if(variable)
+			if(comment)
+				type = 'comment';
+			else if(variable)
 				type = 'variable';
 			else if(keyword)
 				type = 'keyword';
