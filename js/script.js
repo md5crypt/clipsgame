@@ -176,10 +176,14 @@ $(function(){
 			},100);
 		}
 	}
-	
+	function escapeHtml(input){
+		return input.replace(/[&<>"']/g,function(m){
+			return '&#'+m.charCodeAt(0)+';';
+		});
+	}
 	function colorSyntax(code){
 		var last = 'other';
-		return code.replace(/(;[^\r\n]*)|(\?[^\s()]*)|\b(defrule|deffacts|assert|retract|not|and|or|forall|exists)\b|((?:[=><()-]+|&#62;|&#60;|&gt;|&lt;))|([^\s()]+)/g,function(match,comment,variable,keyword,operator){
+		return code.replace(/(;[^\r\n]*)|(\?[^\s()]*)|\b(defrule|deffacts|assert|retract|not|and|or|forall|exists)\b|((?:[=><()-]+))|([^\s()]+)/g,function(match,comment,variable,keyword,operator){
 			var type = 'other';
 			if(comment)
 				type = 'comment';
@@ -192,7 +196,7 @@ $(function(){
 			else if(last == 'keyword')
 				type = 'name';
 			last = type;
-			return '<span class="clips-'+type+'">'+match+'</span>';
+			return '<span class="clips-'+type+'">'+escapeHtml(match)+'</span>';
 		});
 	}
 	function updateView(){
@@ -331,10 +335,9 @@ $(function(){
 			$.get('howtoplay.md').done(function(data){
 				$('#how-to-play').addClass('loaded');
 				alertGlobal.clear();
-				$('#how-to-play').html(micromd(data)).show();
-				$('#how-to-play .language-clips code').each(function(){
-					$(this).html(colorSyntax($(this).html()));
-				});
+				$('#how-to-play').html(micromd(data,false,function(type,code){
+					return type=='clips'?colorSyntax(code):escapeHtml(code);
+				})).show();
 			}).fail(rfail);
 		}else if(hash.slice(0,7) == '#level-'){
 			loadLevel((hash.slice(7)|0)-1);
