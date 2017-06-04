@@ -50,6 +50,10 @@ Clips.prototype.recover = function(){
 	Module.ccall('SetHaltExecution', 'number',['number','number'],[this.env,0]);
 };
 
+Clips.prototype.clear = function(){
+	Module.ccall('EnvClear','number',['number'],[this.env]);
+};
+
 Clips.prototype.eval = function(str){
 	this.buffer = [];
 	this.recover();
@@ -90,19 +94,19 @@ Level.prototype.reset = function(){
 	this.console.clear();
 	this.clips.eval('(unwatch facts)');
 	this.clips.eval('(unwatch activations)');
-	this.clips.eval('(clear)');
+	this.clips.clear(); //weird bug here, had to fallback to the C-version
 	this.clips.eval('(undeffacts initial-fact)');
 	this.clips.eval('(reset)');
+	this.exec('(load '+this.current.key+'.clp'+')');
 	this.clips.eval('(watch facts)');
 	this.clips.eval('(watch activations)');
-	this.exec('(load '+this.current.key+'.clp'+')');
 	this.exec('(reset)',false);
-	this.exec('(run)',false);
+	this.exec('(run 100)',false);
 };
 
 Level.prototype.assert = function(fact){
 	this.exec('(assert '+fact+')');
-	this.exec('(run)',false);
+	this.exec('(run 100)',false);
 	this.history.push(fact);
 };
 
@@ -112,7 +116,7 @@ Level.prototype.undo = function(){
 	var self = this;
 	this.history.forEach(function(fact){
 		self.exec('(assert '+fact+')');
-		self.exec('(run)',false);
+		self.exec('(run 100)',false);
 	});
 	return fact;
 };
@@ -149,7 +153,7 @@ Level.prototype.load = function(id,success,fail){
 			return new RegExp('^'+o.replace(/([()])/g,'\\$1').replace(/\?/g,'[^\\s()]+')+'$');			
 		});
 		self.current = conf;
-		FS.createDataFile("/", key+'.clp', clp, true, false);
+		FS.writeFile(key+'.clp', clp);
 		self.history = [];
 		self.reset();
 		self.cache[key] = conf;
@@ -347,6 +351,7 @@ $(function(){
 	});
 	$.getJSON('levels/index.json').done(function(data){
 		level = new Level(data);
+		window._level = level; //for debug
 		var str = '';
 		for(var i=0; i<data.length; i++)
 			str += '<a class="menu-link" href="#level-'+(i+1)+'"><strong>Level '+(i+1)+":</strong> <em>"+data[i]+'.clp</em></a>';
@@ -354,5 +359,4 @@ $(function(){
 		$(window).trigger('hashchange');
 	}).fail(rfail);
 });
-
 }).call(this);
