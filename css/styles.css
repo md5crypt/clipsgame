@@ -38,12 +38,12 @@ button.wide-button.disabled{
 button.wide-button.disabled:hover{
 	background-color: rgba(128,128,128,0.08);
 }
-#console pre {
+.console pre {
 	margin: 0;
 	padding: .1em .5em;
 	white-space: pre-wrap;
 }
-#console {
+.console {
 	font-size: 1em;
 }
 .collapsable{
@@ -134,6 +134,8 @@ button.wide-button.disabled:hover{
 }
 pre.language-clips{
     background-color: rgba(27,31,35,0.02);
+	-moz-tab-size: 4;
+	tab-size: 4;
 }
 .clips-keyword{
 	color: rgb(147, 15, 128);

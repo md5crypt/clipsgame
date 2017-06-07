@@ -69,15 +69,16 @@ Console.prototype.clear = function(){
 	this.el.html('');
 };
 
-Console.prototype.append = function(o){
+Console.prototype.append = function(o,c){
 	if(o.constructor === String)
 		this.el.append('<pre>'+o+'</pre>');
 	else if(o.constructor === Array)
-		this.el.append(o.map(function(o){return '<pre>'+o+'</pre>';}).join(''));
+		this.el.append(o.map(function(o){return '<pre class="'+c+'">'+o+'</pre>';}).join(''));
 };
 
 function Level(levels){
 	this.console = new Console('#console');
+	this.factConsole = new Console('#console_facts');
 	this.levels = levels;
 	this.current = null;
 	this.clips = null;
@@ -88,6 +89,14 @@ Level.prototype.exec = function(cmd,echo){
 	if(typeof echo === 'undefined' || echo === true)
 		this.console.append('<pre>&gt; '+cmd+'</pre>');
 	this.console.append(this.clips.eval(cmd));
+};
+
+Level.prototype.updateFacts = function(){
+	this.facts = this.clips.eval('(facts)');
+	this.factConsole.clear();
+	this.factConsole.append(this.facts);
+	if(this.facts.length == 0)
+		this.factConsole.append('empty')
 };
 
 Level.prototype.reset = function(){
@@ -102,11 +111,13 @@ Level.prototype.reset = function(){
 	this.clips.eval('(watch activations)');
 	this.exec('(reset)',false);
 	this.exec('(run 100)',false);
+	this.updateFacts();
 };
 
 Level.prototype.assert = function(fact){
 	this.exec('(assert '+fact+')');
 	this.exec('(run 100)',false);
+	this.updateFacts();
 	this.history.push(fact);
 };
 
@@ -118,11 +129,12 @@ Level.prototype.undo = function(){
 		self.exec('(assert '+fact+')');
 		self.exec('(run 100)',false);
 	});
+	this.updateFacts();
 	return fact;
 };
 
 Level.prototype.hasFact = function(fact){
-	return this.clips.eval('(facts)').join().indexOf(fact) >= 0;
+	return this.facts.join('\n').indexOf(fact) >= 0;
 };
 
 Level.prototype.load = function(id,success,fail){
@@ -150,7 +162,10 @@ Level.prototype.load = function(id,success,fail){
 		conf.id = id;
 		conf.key = key;
 		conf.tabure = conf.tabu.map(function(o){
-			return new RegExp('^'+o.replace(/([()])/g,'\\$1').replace(/\?/g,'[^\\s()]+')+'$');			
+			return new RegExp('^'+o.replace(/([()])/g,'\\$1')
+				.replace(/\?/g,'[^\\s()]+')
+				.replace(/((?:[\w-]+\s*\|\s*)+[\w-]+)/g,'\(?:$1\)')+'$'
+			);
 		});
 		self.current = conf;
 		FS.writeFile(key+'.clp', clp);
@@ -187,7 +202,7 @@ $(function(){
 	}
 	function colorSyntax(code){
 		var last = 'other';
-		return code.replace(/(;[^\r\n]*)|(\?[^\s()]*)|\b(defrule|deffacts|assert|retract|not|and|or|forall|exists)\b|((?:[=><()-]+))|([^\s()]+)/g,function(match,comment,variable,keyword,operator){
+		return code.replace(/(;[^\r\n]*)|(\?[^\s()&|~]*)|\b(defrule|deffacts|assert|retract|not|and|or|forall|exists)\b|((?:[&|~=><()-]+))|([^\s()]+)/g,function(match,comment,variable,keyword,operator){
 			var type = 'other';
 			if(comment)
 				type = 'comment';
@@ -245,7 +260,7 @@ $(function(){
 	}
 	function loadLevel(id){
 		if(id >= level.levels.length || id < 0){
-			alertGlobal.show('danger','<strong>No such level!</strong> Level <code>'+(id+1)+'</code> does not exist (yet).');
+			alertGlobal.show('danger','<strong>No such level!</strong> Level <code>'+(id+1)+'</code> does not exist (yet). For now go back to <a href="#level-select">level select</a>.');
 			return;
 		}
 		loadClips(function(){
@@ -274,16 +289,18 @@ $(function(){
 		window.scrollTo(0,document.body.scrollHeight);
 	});
 	$('#btn_assert').click(function(){
-		var fact = $('#input').val();
+		var facts = $('#input').val().split(';');
+		var fact = facts[0];
 		if(!level || !level.current || !fact || $(this).hasClass('disabled'))
 			return;
 		$('#continue-span').hide();
-		if(!fact.match(/^\s*\(\s*[a-zA-Z_][\w-]*(?:\s+[\w-]+)*\s*\)\s*$/)){
+		var m = fact.match(/^\s*(?:\(\s*)?([a-zA-Z_][\w-]*(?:\s+[\w-]+)*)(?:\s*\))?\s*$/);
+		if(!m){
 			alertMsg.show('danger','<strong>Incorrect fact!</strong> The input <code>'+fact+'</code> has inccorect syntax.');
 			window.scrollTo(0,document.body.scrollHeight);
 			return;
 		}
-		fact = fact.replace(/\s+/g,' ').replace(/\s*([()])\s*/g,'$1');
+		fact = '('+m[1].replace(/\s+/g,' ')+')';
 		for(var i=0; i<level.current.tabure.length; i++){
 			if(fact.match(level.current.tabure[i])){
 				alertMsg.show('danger','<strong>Restricted fact!</strong> The fact <code>'+fact+'</code> is restriced in this level and can not be asserted.');
@@ -298,8 +315,8 @@ $(function(){
 		}
 		level.assert(fact);
 		updateButtons();
-		$('#input').val('');
 		if(level.hasFact(level.current.goal)){
+			$('#input').val('');
 			alertMsg.show('success','<strong>Level cleared!</strong> '+(level.current.successStr?micromd(level.current.successStr):''));
 			$('#continue-span').show();
 			window.scrollTo(0,document.body.scrollHeight);
@@ -311,6 +328,12 @@ $(function(){
 			alertMsg.show('info','<strong>Fact asserted.</strong> The fact <code>'+fact+'</code> has been added to the fact table.');
 		}
 		window.scrollTo(0,document.body.scrollHeight);
+		if(facts.length > 0 && facts[1]){
+			$('#input').val(facts.slice(1).join(';'));
+			$(this).click();
+		}else{
+			$('#input').val('');
+		}
 	});
 	$('.collapsable').click(function(){
 		var self = $(this);

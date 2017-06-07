@@ -8,9 +8,9 @@
 )
 
 ; additional logic can be applied
-; inside facts: '&' is and, '|' is or
-; and '~' is not. (color red|green) will match
-; (color red) as well as (color green)
+; to fact patterns inside rules: '&' is and, 
+; '|' is or and '~' is not. (color red|green)
+; will match (color red) as well as (color green)
 (defrule watchout-for-assassins
 	(contains ?place assassin)
 	?slot <- (contains ?place ?object&~assassin)

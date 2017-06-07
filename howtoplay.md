@@ -49,6 +49,21 @@ Patterns can also be **named**. To explain named patterns take a look at the fol
 
 `?something` is an named pattern. To activate a rule named patterns with the same name have to have the same value. This means that the facts `(tom drinks spirytus-rektyfikowany)` and `(has alcohol spirytus-rektyfikowany)` would activate the rule `tom-drinks` but the facts `(tom drinks water)` and `(has alcohol spirytus-rektyfikowany)` would not.
 
+## Retracting facts
+A rule activation can result in not only a fact assertion but also a fact **retraction**. A retracted fact will be deleted from the fact table. Consider the following example:
+
+```clips
+(defrule tom-goes-bankrupt
+	(has wife tom)
+	?price-to-pay <- (has money tom)
+	=>
+	(retract (?price-to-pay))
+)
+```
+The rule `tom-goes-bankrupt` will activate when Tom will have money and a wife. The fact 
+`(has money tom)` in this example has been **named** `price-to-pay` (using the `<-` arrow). Thanks to that we can point to this fact in the `then` part of the rule (after the `=>`) and remove it from the fact table using the `retract` command.
+
+A single rule can assert _and_ retract multiple facts in it's `then` part.
 
 ## I still need help
 The official [Clips User's Guide](http://clipsrules.sourceforge.net/documentation/v630/ug.pdf) will probably answer all your questions. You can read it for sheer entertainment. Here are some quotes if you don't believe me:
