@@ -36,7 +36,7 @@ where
 * `goalStr` is the level's goal description (in markdown)
 * `successStr` is the text that is added after _"level cleared!"_  (in markdown)
 * `goal` is the goal fact
-* `tabu` is a array of restricted facts. `?` can be used a wildcard, i.e. `(is ? fed)`
+* `tabu` is a array of restricted facts. `?` can be used as a wildcard, i.e. `(is ? fed)` and `|` can be used as or, i.e. `(is tiger|wolf fed)`.
 * `limit` is the amount of facts that can be asserted by the player. `-1` for no limit
 
 ## Clips emscripten build
