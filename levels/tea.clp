@@ -1,11 +1,11 @@
-(defrule war-of-independance
+(defrule boston-tea-party
 	; they dumped the tea into the sea!
-	?ship <- (ship ?name new-york)
-	?route <- (route london new-york)
+	?ship <- (ship ?name boston)
+	?route <- (route london boston)
 	(cargo ?name tea)
 	=>
 	(retract ?ship ?route)
-	(assert (route hong-kong new-york))
+	(assert (route hong-kong boston))
 )
 
 (defrule set-sail
@@ -43,12 +43,12 @@
 	(ship flying-cloud london)
 	(ship hornet london)
 	(ship sea-witch hong-kong)
-	(route new-york hong-kong)
-	(route new-york london)
-	(route london new-york)
+	(route boston hong-kong)
+	(route boston london)
+	(route london boston)
 	(route london hong-kong)
 	(route hong-kong london)
 	(stock hong-kong tea)
 	(stock london opium)
-	(stock new-york cotton)
+	(stock boston cotton)
 )
