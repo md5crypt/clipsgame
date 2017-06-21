@@ -13,7 +13,7 @@
 ; will match (color red) as well as (color green)
 (defrule watchout-for-assassins
 	(contains ?place assassin)
-	?slot <- (contains ?place ?object&~assassin)
+	?slot <- (contains ?place ~assassin)
 	=>
 	(retract ?slot)
 )

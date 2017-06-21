@@ -1,6 +1,6 @@
 {
 	"title":"Clipper Wars",
-	"description":"It's the XIV century! [Clippers](https://en.m.wikipedia.org/wiki/Clipper) are revolutionizing sea transport and rich gentlemen are drowning themselves in tea! A *situation* has caused an shortage of tea in Boston and it's up to **you** to deal with it!",
+	"description":"It's the XIX century! [Clippers](https://en.m.wikipedia.org/wiki/Clipper) are revolutionizing sea transport and rich gentlemen are drowning themselves in tea! A *situation* has caused an shortage of tea in Boston and it's up to **you** to deal with it!",
 	"goalStr":"Add `(stock boston tea)` to the fact table.",
 	"successStr":"Hey, did that ship have opium on it? It sailed by so fast I didn't see.",
 	"goal":"(stock boston tea)",
