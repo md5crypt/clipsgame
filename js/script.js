@@ -226,7 +226,7 @@ $(function(){
 		if(level.current.tabu && level.current.tabu.length > 0)
 			desc += '<h4>Restricted facts</h4><ul>'+level.current.tabu.map(function(a){return '<li><code>'+a+'</code></li>';}).join('')+'</ul>';
 		$('#info').html(desc);
-		$('#defenitions').html(colorSyntax(level.current.clp));
+		$('#definitions').html(colorSyntax(level.current.clp));
 		updateButtons();
 	}
 	function updateButtons(){
