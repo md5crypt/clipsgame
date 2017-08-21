@@ -226,7 +226,7 @@ $(function(){
 		if(level.current.tabu && level.current.tabu.length > 0)
 			desc += '<h4>Restricted facts</h4><ul>'+level.current.tabu.map(function(a){return '<li><code>'+a+'</code></li>';}).join('')+'</ul>';
 		$('#info').html(desc);
-		$('#defenitions').html(colorSyntax(level.current.clp));
+		$('#definitions').html(colorSyntax(level.current.clp));
 		updateButtons();
 	}
 	function updateButtons(){
@@ -296,20 +296,20 @@ $(function(){
 		$('#continue-span').hide();
 		var m = fact.match(/^\s*(?:\(\s*)?([a-zA-Z_][\w-]*(?:\s+[\w-]+)*)(?:\s*\))?\s*$/);
 		if(!m){
-			alertMsg.show('danger','<strong>Incorrect fact!</strong> The input <code>'+fact+'</code> has inccorect syntax.');
+			alertMsg.show('danger','<strong>Incorrect fact!</strong> The input <code>'+fact+'</code> has incorrect syntax.');
 			window.scrollTo(0,document.body.scrollHeight);
 			return;
 		}
 		fact = '('+m[1].replace(/\s+/g,' ')+')';
 		for(var i=0; i<level.current.tabure.length; i++){
 			if(fact.match(level.current.tabure[i])){
-				alertMsg.show('danger','<strong>Restricted fact!</strong> The fact <code>'+fact+'</code> is restriced in this level and can not be asserted.');
+				alertMsg.show('danger','<strong>Restricted fact!</strong> The fact <code>'+fact+'</code> is restricted in this level and can not be asserted.');
 				window.scrollTo(0,document.body.scrollHeight);
 				return;
 			}
 		}
 		if(level.hasFact(fact)){
-			alertMsg.show('warning','<strong>Fact reassertion!</strong> The fact <code>'+fact+'</code> is allready in the fact table.');
+			alertMsg.show('warning','<strong>Fact reassertion!</strong> The fact <code>'+fact+'</code> is already in the fact table.');
 			window.scrollTo(0,document.body.scrollHeight);
 			return;
 		}
