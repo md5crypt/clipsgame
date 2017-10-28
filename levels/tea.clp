@@ -10,11 +10,11 @@
 
 (defrule set-sail
 	?anchor <- (ship ?name ?location)
-	?command <- (sail ?name ?destenation)
-	(route ?location ?destenation)
+	?command <- (sail ?name ?destination)
+	(route ?location ?destination)
 	=>
 	(retract ?anchor ?command)
-	(assert (ship ?name ?destenation))
+	(assert (ship ?name ?destination))
 )
 
 (defrule unload-cargo
