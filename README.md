@@ -6,6 +6,9 @@ Play it here: https://md5crypt.github.io/clipsgame/
 ## How to play
 https://md5crypt.github.io/clipsgame/#how-to-play
 
+## I CAN'T SOLVE IT AND IT DRIVES ME MAAAAD
+contact me :D - borsuczek (at) gmail (dot) com
+
 ## Level structure
 All level definition files and the level index file are located in the `levels` folder.
 
