@@ -10,43 +10,78 @@ https://md5crypt.github.io/clipsgame/#how-to-play
 contact me :D - borsuczek (at) gmail (dot) com
 
 ## Level structure
-All level definition files and the level index file are located in the `levels` folder.
+* adding levels does not require rebuilding the application
+* level definition files are located in the `levels` folder
+* `levels/index.json` holds a list of available levels, The order of elements defines the level order
+* for each level two files should exist
+  * `<name>.clp` file with the level's clips code
+  * `<name>.json` file with the level's definition (see below)
 
-### Level index
-The `index.json` file holds an single array of strings, corresponding with the names of level definition files. The order of array elements defines the level order.
+### Level definition files
 
-### Level definitions
-Each level consists of a `.json` file and a `.clp` file with the same name.
+```typescript
+export interface LevelDefinition {
+	/** title displayed in the header */
+	title: string
 
-The `.clp` file simply holds the level's clips code.
+	/** description / flavor text, markdown enabled */
+	description: string
 
-The `.json` file has the following structure:
-```json
-{
-	"title":"The Hungry Tiger",
-	"description":"The tiger is hungry! You have to feed it!",
-	"goalStr":"Add `(is tiger fed)` to the fact table using only one assertion.",
-	"successStr":"The tiger thanks you!",
-	"goal":"(is tiger fed)",
-	"tabu":["(is tiger fed)"],
-	"limit":1
+	/** goal description, markdown enabled, markdown enabled */
+	goalDescription: string
+
+	/** message displayed after completing the level, markdown enabled */
+	winMessage: string
+
+	/**
+	 * the fact / facts needed to complete the game
+	 * facts need to be given with ( ) and exactly one space
+	 * between words
+	 */
+	goal: string | string[]
+
+	/**
+	 * array of restricted facts
+	 * - facts need to be given with ( ) and exactly one space
+	 * between words
+	 * - ? can be used instead of a word to match all words
+	 * - | can be used to create word union
+	 * example: (foo bar|baz)
+	 */
+	tabu?: string[]
+
+	/** amount of allowed assertions, omit or set to -1 for not restriction */
+	limit?: number
 }
 ```
-where
 
-* `title` is the level's name
-* `description` is the level's plot description (in markdown)
-* `goalStr` is the level's goal description (in markdown)
-* `successStr` is the text that is added after _"level cleared!"_  (in markdown)
-* `goal` is the goal fact
-* `tabu` is a array of restricted facts. `?` can be used as a wildcard, i.e. `(is ? fed)` and `|` can be used as or, i.e. `(is tiger|wolf fed)`.
-* `limit` is the amount of facts that can be asserted by the player. `-1` for no limit
+## Building from source
 
-## Clips emscripten build
-No modifications have been made to the original code. No additional wrapper has been added. This is a 'raw' as-is build that exports all functions documented in the _clips advanced programing guide_.
+### Web app
 
-### How to build
-* download clips core [source](https://sourceforge.net/projects/clipsrules/files/CLIPS/6.30/)
-* extract to `clips/source`
-* run `make` in the `clips` folder
+```bash
+npm install
+npm run build
+```
 
+To start the local dev servers
+
+```bash
+npm start
+```
+
+
+### CLIPS wasm bundle
+
+Make sure emscripten is installed and:
+
+```bash
+cd clips
+./build.sh
+```
+
+Note that:
+* build set up to work with emsdk 4.0.13
+  * using older version will not work due to use of custom syscall wrappers
+  * using newer version might not work for the same reasons but results can vary
+* CLIPS source code link in `build.sh` might be broken

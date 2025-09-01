@@ -1,0 +1,22 @@
+{ 
+	"include": [
+		"./src/**/*",
+		"clips/wasmModuleFactory.d.ts"
+	],
+	"compilerOptions":{ 
+		"target": "ES2017",
+		"module": "ES2022",
+		"moduleResolution": "node",
+		"strict": true,
+		"noImplicitAny": true,
+		"strictNullChecks": true,
+		"noImplicitThis": true,
+		"alwaysStrict": true,
+		"noUnusedLocals": false,
+		"noUnusedParameters": false,
+		"noImplicitReturns": true,
+		"preserveSymlinks": true,
+		"jsx": "react-jsx",
+		"jsxImportSource": "stagnate"
+	}
+}

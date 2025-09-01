@@ -1,9 +1,11 @@
 {
-	"title":"The Hungry Tiger",
-	"description":"The tiger is hungry! You have to feed it!",
-	"goalStr":"Add `(is tiger fed)` to the fact table using only one assertion.",
-	"successStr":"The tiger thanks you!",
-	"goal":"(is tiger fed)",
-	"tabu":["(is tiger fed)"],
-	"limit":1
+	"title": "The Hungry Tiger",
+	"description": "The tiger is hungry! You have to feed it!",
+	"goalDescription": "Add `(is tiger fed)` to the fact table using only one assertion.",
+	"winMessage": "The tiger thanks you! Well... at least one of them.",
+	"goal": "(is tiger fed)",
+	"tabu": [
+		"(is tiger fed)"
+	],
+	"limit": 1
 }

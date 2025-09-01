@@ -1,0 +1,12 @@
+{
+	"title": "Build Permit",
+	"description": "Get through bureaucratic hell to get a building permit. You've heard gossip that it might be impossible to get one without resorting to bribery and some questionable exchanges, but c'mon - how bad can it be?",
+	"goalDescription": "Add `(have document build-permit)` to the fact table.",
+	"winMessage": "The new monochrome postcards where a hit.",
+	"goal": "(have document build-permit)",
+	"tabu": [
+		"(have currency|document|souvenir|form ?)",
+		"(market ?)"
+	],
+	"limit": -1
+}

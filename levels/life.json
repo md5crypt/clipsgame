@@ -1,9 +1,9 @@
 {
-	"title":"The Cycle of Life",
-	"description":"Help Bob survive in the jungle of a modern urban city.",
-	"goalStr":"Add `(person bob)` to the fact table and make it stay there.",
-	"successStr":"Bob got fired for coming drunk to work and that stressed him out...",
-	"goal":"(person bob)",
-	"tabu":[],
-	"limit":-1
+	"title": "The Cycle of Life",
+	"description": "Help Bob survive in the jungle of a modern urban city.",
+	"goalDescription": "Add `(person bob)` to the fact table and make it stay there.",
+	"winMessage": "Bob got fired for coming drunk to work and that stressed him out...",
+	"goal": "(person bob)",
+	"tabu": [],
+	"limit": -1
 }

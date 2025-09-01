@@ -1,10 +1,13 @@
 {
-	"title":"Harry's Bow",
-	"description":"Archer Harry needs to win a battle. Give him a hand.",
-	"goalStr":"Add `(wins harry)` to the fact table using only two assertions.",
-	"successStr":"Harry was a marvellous weapon.",
-	"goal":"(wins harry)",
-	"tabu":["(wins ?)","(distance ?)","(range bow small)"],
-	"limit":2
+	"title": "Harry's Bow",
+	"description": "Archer Harry needs to win a battle. Give him a hand.",
+	"goalDescription": "Add `(wins harry)` to the fact table using only two assertions.",
+	"winMessage": "Harry was a marvellous weapon.",
+	"goal": "(wins harry)",
+	"tabu": [
+		"(wins ?)",
+		"(distance ?)",
+		"(range bow small)"
+	],
+	"limit": 2
 }
- 

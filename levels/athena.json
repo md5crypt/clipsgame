@@ -1,9 +1,13 @@
 {
-	"title":"The Birth of Athena",
-	"description":"Help Athena pop out of Zeus' head and make sure she stays a virgin.",
-	"goalStr":"Add `(virgin athena)` to the fact table. You can only add **deities** and pass around them a single **helmet**.",
-	"successStr":"The myths say that Hephaestus actually attempted to rape Athena but the goddess of wisdom, craft, **war**, diplomacy, weaving, poetry, medicine, and commerce knew how to defended herself (*surprise, surprise*).",
-	"goal":"(virgin athena)",
-	"tabu":["(deity female athena)","(helmet|skull-cracked|headache ?)","(child ? ?)"],
-	"limit":-1
-} 
+	"title": "The Birth of Athena",
+	"description": "Help Athena pop out of Zeus' head and make sure she stays a virgin.",
+	"goalDescription": "Add `(virgin athena)` to the fact table. You can only add **deities** and pass around them a single **helmet**.",
+	"winMessage": "Gods... they just keep coming back.",
+	"goal": "(virgin athena)",
+	"tabu": [
+		"(deity female athena)",
+		"(helmet|skull-cracked|headache ?)",
+		"(child ? ?)"
+	],
+	"limit": -1
+}

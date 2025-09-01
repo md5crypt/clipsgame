@@ -1,4 +1,4 @@
-# <a href="#level-select" class="back-button" alt="go to level select">&nbsp</a>How to play _Clips the Game_
+# How to play
 Do you know what a [expert system](https://en.wikipedia.org/wiki/Expert_system) is? If so, I doubt you'll have to read this document. Just play the game, it should be quite intuitive even if you never seen the _clips_ language before.
 
 ## Facts
@@ -66,8 +66,8 @@ The rule `tom-goes-bankrupt` will activate when Tom will have money and a wife. 
 A single rule can assert _and_ retract multiple facts in it's `then` part.
 
 ## I still need help
-The official [Clips User's Guide](http://clipsrules.sourceforge.net/documentation/v630/ug.pdf) will probably answer all your questions. You can read it for sheer entertainment. Here are some quotes if you don't believe me:
+The official [Clips User's Guide](https://www.clipsrules.net/documentation/v642/ug642.pdf) will probably answer all your questions. You can read it for sheer entertainment. Here are some quotes if you don't believe me:
 
 > One way of being organized is to keep a list. (Note: if you really want to impress people, show them a list of your lists.)
 
-> Many situations occur in life where it's wise to do things in a systematic manner. That way, if your expectations don't work out you can try again systematically (such as the common algorithm for finding the Perfect Spouse by getting married over and over again). 
+> Many situations occur in life where it's wise to do things in a systematic manner. That way, if your expectations don't work out you can try again systematically (such as the common algorithm for finding the Perfect Spouse by getting married over and over again).

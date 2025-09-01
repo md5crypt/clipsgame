@@ -1,2 +1,3 @@
-clips/source/*.c
-clips/source/*.h
+clips/core
+clips/source
+node_modules

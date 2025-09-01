@@ -1,9 +1,13 @@
 {
-	"title":"The Wandering Traveler",
-	"description":"Outwit murderous assassins and help a wary traveler get some rest after a long journey.",
-	"goalStr":"Add `(contains inn traveler)` to the fact table.",
-	"successStr":"Umm... you just randomly helped someone else, didn't you? That poor soul is still in the forest, _you monster_!",
-	"goal":"(contains inn traveler)",
-	"tabu":["(contains inn traveler)","(connected ? inn)","(connected inn ?)"],
-	"limit":-1
+	"title": "The Wandering Traveler",
+	"description": "Outwit murderous assassins and help a wary traveler get some rest after a long journey.",
+	"goalDescription": "Add `(contains inn traveler)` to the fact table.",
+	"winMessage": "Umm... you just randomly helped someone else, didn't you? That poor soul is still in the forest, _you monster_!",
+	"goal": "(contains inn traveler)",
+	"tabu": [
+		"(contains inn traveler)",
+		"(connected ? inn)",
+		"(connected inn ?)"
+	],
+	"limit": -1
 }

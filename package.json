@@ -1,0 +1,15 @@
+{
+  "scripts": {
+    "start": "webpack serve --progress --config webpack.config.js",
+    "build": "webpack bundle --config webpack.config.js --env production"
+  },
+  "dependencies": {
+    "kiss-jss": "^1.0.3",
+    "micromd": "^1.0.2",
+    "stagnate": "^1.1.1",
+    "ts-loader": "^9.5.2",
+    "webpack": "^5.101.2",
+    "webpack-cli": "^6.0.1",
+    "webpack-dev-server": "^5.2.2"
+  }
+}
