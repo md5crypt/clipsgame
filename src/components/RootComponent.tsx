@@ -17,7 +17,7 @@ const classes = createStyles({
 		boxSizing: "border-box",
 		width: "100%",
 		padding: 45,
-		fontFamily: "SourceSans3",
+		fontFamily: "SourceSans3, sans-serif",
 		fontWeight: 380,
 		fontSize: 17,
 		lineHeight: 1.45,
@@ -91,7 +91,7 @@ export class RootComponent extends Component {
 	}
 
 	private async start() {
-		await Promise.allSettled(["SourceCodePro", "SourceSans3"].map(name => {
+		await Promise.all(["SourceCodePro", "SourceSans3"].map(name => {
 			const fontFace = new FontFace(name, `url(fonts/${name}.woff2)`, {
 				weight: "200 900",
 				display: "swap",
@@ -99,7 +99,7 @@ export class RootComponent extends Component {
 			})
 			const promise = fontFace.load()
 			document.fonts.add(fontFace)
-			return promise
+			return promise.catch(() => console.warn(`failed to load font ${name}`))
 		}))
 		router.navigate(Router.parseUri(), "none")
 		window.addEventListener("popstate", () => router.navigate(Router.parseUri(), "replace"))

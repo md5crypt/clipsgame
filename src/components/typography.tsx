@@ -69,7 +69,7 @@ const classes = createStyles({
 		}
 	},
 	code: {
-		fontFamily: "SourceCodePro",
+		fontFamily: "SourceCodePro, monospace",
 		padding: [0, ".25em"],
 		paddingTop: ".175em",
 		paddingBottom: ".175em",
@@ -82,7 +82,7 @@ const classes = createStyles({
 	block: {
 		margin: 0,
 		marginBottom: 16,
-		fontFamily: "SourceCodePro",
+		fontFamily: "SourceCodePro, monospace",
 		wordWrap: "normal",
 		overflow: "auto",
 		padding: 16,

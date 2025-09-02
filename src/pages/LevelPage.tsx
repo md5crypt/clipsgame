@@ -22,7 +22,7 @@ const classes = createStyles({
 		width: "100%",
 		padding: [0, 8],
 		margin: 0,
-		fontFamily: "SourceCodePro",
+		fontFamily: "SourceCodePro, monospace",
 		fontSize: 14,
 		fontWeight: 450,
 		boxSizing: "border-box",
