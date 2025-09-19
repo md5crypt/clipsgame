@@ -64,7 +64,7 @@ npm install
 npm run build
 ```
 
-To start the local dev servers
+To start the local dev server
 
 ```bash
 npm start

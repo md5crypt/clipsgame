@@ -230,17 +230,7 @@ class LevelPage extends Component<Refs, Props> {
 				class={[classes.input, classes.textarea, classes.scriptOnly]}
 				placeholder={"(fact to be asserted)"}
 				spellcheck="false"
-				onInput={() => {
-					const input = this.refs.scriptInput
-					const value = input.value
-					let count = 1
-					for (let i = 0; i < value.length; i += 1) {
-						if (value[i] == "\n") {
-							count += 1
-						}
-					}
-					input.rows = Math.max(4, count)
-				}}
+				onInput={() => this.handleScriptInputUpdate()}
 				rows={4}
 			/>
 			<div class={classes.hint}>
@@ -407,12 +397,25 @@ class LevelPage extends Component<Refs, Props> {
 			const assertions = this.props.level.assertions
 			if (this._populateTextarea && assertions.length) {
 				this.refs.scriptInput.value = assertions.join("\n")
+				this.handleScriptInputUpdate()
 			}
 			this._populateTextarea = false
 			localStorage.setItem("scriptMode", "1")
 		} else {
 			localStorage.removeItem("scriptMode")
 		}
+	}
+
+	private handleScriptInputUpdate() {
+		const input = this.refs.scriptInput
+		const value = input.value
+		let count = 1
+		for (let i = 0; i < value.length; i += 1) {
+			if (value[i] == "\n") {
+				count += 1
+			}
+		}
+		input.rows = Math.max(4, count)
 	}
 }
 

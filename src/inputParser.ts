@@ -40,7 +40,7 @@ export function parseInput(input: string) {
 			if (top.length == 0) {
 				error(`a fact has to start from a word, got \`${match[0]}\``)
 			}
-			top.push(match[MatchGroup.NAME])
+			top.push(match[MatchGroup.WORD])
 		} else if (match[MatchGroup.PARENTHESIS] !== undefined) {
 			if (match[0] == "(") {
 				stack.push(top)

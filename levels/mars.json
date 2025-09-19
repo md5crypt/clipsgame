@@ -1,0 +1,13 @@
+{
+	"title": "Mission On Mars",
+	"description": "Due to recent budget cuts NASA has decided to outsource it's mission operation to random strangers online. You are a lucky freelancer that got the gig of planning their martian rover missions! Your first task it to guide the rover into the martian ice cap, extract an small ice sample using the onboard drill and deliver it back to the lander for analysis. On the zoom call briefing you were informed that the ice can melt, which might be tricky.",
+	"goalDescription": "Add `(location vastitas-borealis)` and `(sample)` to the fact table. Both facts have to be present at the same time in the fact table for the level to be solved.",
+	"winMessage": "The rover did two round trips due to a bug, but apparently the first run has pre-chilled the rover's sample chamber, so you told everyone it was your plan all along.",
+	"goal": ["(location vastitas-borealis)", "(sample)"],
+	"tabu": [
+		"(location vastitas-borealis|scandia-cavi|chasma-boreale|olympia-planum|gemini-lingula|planum-boreum)",
+		"(path ? ? vastitas-borealis|scandia-cavi|chasma-boreale|olympia-planum|gemini-lingula|planum-boreum)",
+		"(sample)"
+	],
+	"limit": -1
+}

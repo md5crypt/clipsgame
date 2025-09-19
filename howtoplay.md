@@ -57,7 +57,7 @@ A rule activation can result in not only a fact assertion but also a fact **retr
 	(has wife tom)
 	?price-to-pay <- (has money tom)
 	=>
-	(retract (?price-to-pay))
+	(retract ?price-to-pay)
 )
 ```
 The rule `tom-goes-bankrupt` will activate when Tom will have money and a wife. The fact 
