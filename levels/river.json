@@ -1,6 +1,6 @@
 {
 	"title": "The Wolf, The Goat, and The Cabbage",
-	"description": "A classic! Help the farmer get his **wolf**, **goat** and **cabbage** across the river using at most **11 assertions**! The wolf is tame and the cabbage is made of super dense uranium making it way to heavy to transport together with the animals!",
+	"description": "A classic! Help the farmer get his **wolf**, **goat** and **cabbage** across the river using at most **8 assertions**! The wolf is tame and the cabbage is made of super dense uranium making it way to heavy to transport together with the animals!",
 	"goalDescription": "Add `(has home wolf)`, `(has home goat)` and `(has home cabbage)` to the fact table. All three facts have to be present at the same time in the fact table for the level to be solved.",
 	"winMessage": "I guess he build a pontoon bridge...",
 	"goal": [
@@ -11,5 +11,5 @@
 	"tabu": [
 		"(has boat|home|forest ?)"
 	],
-	"limit": 11
+	"limit": 8
 }
